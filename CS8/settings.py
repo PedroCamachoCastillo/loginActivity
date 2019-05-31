@@ -23,9 +23,9 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'c7d5jvhbk%sdyt=vllu0=aw*&uu^)2&$ez0a88g)(-0=9v)y9l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -157,9 +157,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 
 # Update database configuration with $DATABASE_URL.
-import dj_database_url  
-db_from_env = dj_database_url.config(conn_max_age=500)  
-DATABASES['default'].update(db_from_env)
+#import dj_database_url  
+#db_from_env = dj_database_url.config(conn_max_age=500)  
+#DATABASES['default'].update(db_from_env)
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
 
