@@ -1,1 +1,1 @@
-web: gunicorn cs8.wsgi
+web: gunicorn CS8.wsgi
