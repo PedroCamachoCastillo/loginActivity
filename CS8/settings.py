@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'c7d5jvhbk%sdyt=vllu0=aw*&uu^)2&$ez0a88g)(-0=9v)y9l'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
-
+    'whitenoise.runserver_nostatic',
     'Login',
 ]
 
@@ -61,6 +61,7 @@ CORS_ALLOW_METHODS = (
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -94,13 +95,24 @@ WSGI_APPLICATION = 'CS8.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+#        'NAME': 'cs8db',
+#        'USER': 'postgres',
+#        'PASSWORD': '1234',
+#        'HOST':'localhost',
+#        'PORT':'5432'
+#    }
+#}
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'cs8db',
-        'USER': 'postgres',
-        'PASSWORD': '1234',
-        'HOST':'localhost',
+        'NAME': 'defbm7o7busefc',
+        'USER': 'csixctbzjsyvlb',
+        'PASSWORD': '9531134a558a1aae427805e9f52830001e68135558b6b0b194141b49ab63c2d6',
+        'HOST':'ec2-75-101-147-226.compute-1.amazonaws.com',
         'PORT':'5432'
     }
 }
@@ -143,3 +155,17 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# Update database configuration with $DATABASE_URL.
+#import dj_database_url  
+#db_from_env = dj_database_url.config(conn_max_age=500)  
+#DATABASES['default'].update(db_from_env)
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')  
+
+# Extra places for collectstatic to find static files.
+#STATICFILES_DIRS = (  
+ #   os.path.join(BASE_DIR, 'static'),
+#)
+
+#STATICFILES_STORAGE = 'whitenoise.django.GzipManifestStaticFilesStorage'
